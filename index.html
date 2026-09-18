@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>html{display:none}</style>
+<script>
+/* Clickjacking guard — GitHub Pages cannot send an X-Frame-Options / frame-ancestors
+   HTTP header (only a real server response header works; meta/JS cannot replicate it
+   fully), so the page stays hidden until confirmed it isn't sitting inside someone
+   else's iframe, and tries to break out if it is. */
+(function () {
+  try {
+    if (window.self === window.top) {
+      document.documentElement.style.display = 'block';
+    } else {
+      window.top.location = window.self.location.href;
+    }
+  } catch (e) {
+    // cross-origin parent blocked reading window.top — assume framed, keep hidden
+  }
+})();
+</script>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="robots" content="noindex, nofollow">
+
+<title>ФК «Голос» — футбольный клуб для детей от 4 лет и взрослых</title>
+<meta name="description" content="Футбольная секция для детей от 4 лет и взрослых команд. Тренеры с лицензией РФС, страховка на каждой тренировке, крытый манеж зимой. Первая тренировка — бесплатно.">
+<meta name="theme-color" content="#082A1B">
+
+<link rel="canonical" href="https://vitaly-sokol911.github.io/football/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="ФК «Голос»">
+<meta property="og:title" content="ФК «Голос» — здесь у каждого есть голос">
+<meta property="og:description" content="Футбольный клуб для детей от 4 лет и взрослых. Первая тренировка бесплатно.">
+<meta property="og:image" content="https://vitaly-sokol911.github.io/football/img/hero.jpg">
+<meta property="og:url" content="https://vitaly-sokol911.github.io/football/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23082A1B'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23FFC53D' stroke-width='2'/%3E%3Cpath d='M16 7v18' stroke='%23FFC53D' stroke-width='2'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --ink:#04150C;
+  --pitch-900:#082A1B;
+  --pitch-800:#0B3522;
+  --pitch-700:#10432B;
+  --pitch-600:#175436;
+
+  --chalk:#F1F5EE;
+  --chalk-70:rgba(241,245,238,.70);
+  --chalk-45:rgba(241,245,238,.45);
+  --line:rgba(241,245,238,.14);
+  --line-strong:rgba(241,245,238,.28);
+
+  --flood:#FFC53D;
+  --flood-soft:rgba(255,197,61,.12);
+  --on-flood:#06200F;
+
+  --font-display:'Archivo',system-ui,sans-serif;
+  --font-body:'Archivo',system-ui,sans-serif;
+  --font-data:'Barlow Condensed','Archivo',sans-serif;
+
+  --r:14px;
+  --r-lg:22px;
+  --ease:cubic-bezier(.2,.75,.25,1);
+  --pad:20px;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--font-body);
+  background:var(--pitch-900);
+  color:var(--chalk);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--flood);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--flood);color:var(--on-flood);padding:12px 20px;border-radius:0 0 var(--r) 0;font-weight:700;text-decoration:none}
+.skip:focus{left:0}
+
+/* ============ TYPE ============ */
+h1,h2,h3,h4{font-family:var(--font-display);line-height:1.06;letter-spacing:-.03em;font-weight:800}
+h1{font-size:clamp(2.4rem,7vw,4.6rem);font-weight:900}
+h2{font-size:clamp(1.9rem,4.4vw,3.1rem);font-weight:900}
+h3{font-size:1.25rem}
+p{text-wrap:pretty}
+
+.eyebrow{
+  font-family:var(--font-data);font-size:.82rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.18em;color:var(--flood);
+  display:inline-flex;align-items:center;gap:10px;
+}
+.eyebrow::before{content:'';width:26px;height:2px;background:var(--flood);flex:none}
+.lead{color:var(--chalk-70);font-size:1.05rem;max-width:56ch;margin-top:14px}
+
+/* ============ LAYOUT ============ */
+.wrap{max-width:1180px;margin:0 auto;padding:0 var(--pad)}
+.section{padding:72px 0;border-top:1px solid var(--line)}
+.section--alt{background:var(--pitch-800)}
+.section-head{margin-bottom:40px}
+.section-head h2{margin-top:14px}
+.section-head--center{text-align:center}
+.section-head--center .lead{margin-left:auto;margin-right:auto}
+
+/* ============ NAV ============ */
+.nav{
+  position:fixed;inset:0 0 auto;z-index:90;
+  background:rgba(8,42,27,.72);
+  backdrop-filter:blur(18px) saturate(160%);
+  -webkit-backdrop-filter:blur(18px) saturate(160%);
+  border-bottom:1px solid transparent;transition:border-color .3s,background .3s;
+}
+.nav.is-stuck{background:rgba(6,33,21,.94);border-bottom-color:var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-family:var(--font-display);font-weight:900;font-size:1.02rem;letter-spacing:-.02em}
+.brand-mark{width:34px;height:34px;flex:none;border-radius:50%;border:2px solid var(--flood);display:grid;place-items:center;position:relative}
+.brand-mark::after{content:'';position:absolute;width:2px;height:100%;background:var(--flood);opacity:.85}
+.brand-mark span{width:9px;height:9px;border-radius:50%;background:var(--flood);position:relative;z-index:1}
+.brand em{font-style:normal;color:var(--flood)}
+
+.menu{display:none;list-style:none;align-items:center;gap:26px}
+.menu a{text-decoration:none;color:var(--chalk-70);font-size:.92rem;font-weight:500;transition:color .2s}
+.menu a:hover{color:var(--chalk)}
+.nav-cta{
+  display:none;background:var(--flood);color:var(--on-flood);
+  padding:11px 20px;border-radius:100px;text-decoration:none;
+  font-weight:700;font-size:.86rem;white-space:nowrap;transition:transform .2s var(--ease)
+}
+.nav-cta:hover{transform:translateY(-2px)}
+.burger{display:grid;gap:5px;background:none;border:0;cursor:pointer;padding:8px;margin-right:-8px}
+.burger span{display:block;width:22px;height:2px;background:var(--chalk);border-radius:2px;transition:transform .25s,opacity .2s}
+.nav.is-open .burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav.is-open .burger span:nth-child(2){opacity:0}
+.nav.is-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+.drawer{display:none;background:var(--pitch-800);border-top:1px solid var(--line)}
+.nav.is-open .drawer{display:block}
+.drawer ul{list-style:none;padding:14px var(--pad) 22px;display:grid;gap:2px}
+.drawer a{display:block;padding:13px 0;text-decoration:none;color:var(--chalk-70);border-bottom:1px solid var(--line);font-weight:500}
+.drawer .drawer-cta{margin-top:14px;background:var(--flood);color:var(--on-flood);text-align:center;border-radius:100px;padding:14px;font-weight:700;border:0}
+
+/* ============ HERO ============ */
+.hero{position:relative;padding:120px 0 56px;overflow:hidden;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-2}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(4,21,12,.86) 0%,rgba(8,42,27,.90) 55%,var(--pitch-900) 100%);
+}
+/* chalk pitch geometry — the field the club plays on */
+.hero-chalk{position:absolute;top:50%;right:-140px;width:520px;height:520px;transform:translateY(-50%);z-index:-1;opacity:.5;pointer-events:none}
+.hero-chalk circle,.hero-chalk line,.hero-chalk path{stroke:var(--line-strong);fill:none;stroke-width:1.5}
+
+.hero h1{margin:18px 0 0;max-width:15ch}
+.hero h1 em{font-style:normal;color:var(--flood)}
+.hero-sub{margin-top:20px;font-size:clamp(1rem,2vw,1.18rem);color:var(--chalk-70);max-width:46ch}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:15px 28px;border-radius:100px;text-decoration:none;
+  font-family:var(--font-body);font-weight:700;font-size:.95rem;
+  border:1px solid transparent;cursor:pointer;transition:transform .2s var(--ease),background .2s,border-color .2s
+}
+.btn-primary{background:var(--flood);color:var(--on-flood)}
+.btn-primary:hover{transform:translateY(-2px);background:#ffd166}
+.btn-ghost{border-color:var(--line-strong);color:var(--chalk);background:transparent}
+.btn-ghost:hover{border-color:var(--chalk);transform:translateY(-2px)}
+.btn-sm{padding:12px 22px;font-size:.88rem}
+
+.hero-facts{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:48px;
+  background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden
+}
+.hero-facts div{background:var(--pitch-900);padding:16px 18px}
+.hero-facts b{display:block;font-family:var(--font-display);font-size:1.55rem;font-weight:900;color:var(--flood);line-height:1}
+.hero-facts span{display:block;margin-top:6px;font-family:var(--font-data);font-size:.82rem;text-transform:uppercase;letter-spacing:.1em;color:var(--chalk-45)}
+
+/* ============ OUTCOMES ============ */
+.outcomes{display:grid;gap:18px;margin-top:8px}
+.oc{padding:26px 22px;background:var(--pitch-800);border:1px solid var(--line);border-radius:var(--r-lg);transition:border-color .25s,transform .25s var(--ease)}
+.oc:hover{border-color:var(--line-strong);transform:translateY(-3px)}
+.section--alt .oc{background:var(--pitch-700)}
+.oc-num{font-family:var(--font-data);font-size:.8rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--flood)}
+.oc h3{margin:12px 0 8px}
+.oc p{color:var(--chalk-70);font-size:.95rem}
+
+.adults-note{
+  margin-top:26px;padding:24px;border:1px solid var(--line);border-left:3px solid var(--flood);
+  border-radius:var(--r);background:var(--flood-soft);display:grid;gap:8px
+}
+.adults-note h3{font-size:1.1rem}
+.adults-note p{color:var(--chalk-70);font-size:.95rem;max-width:62ch}
+
+/* ============ PATHWAY (signature) ============ */
+.path{display:grid;gap:22px;position:relative}
+.path-card{
+  position:relative;display:flex;flex-direction:column;
+  background:var(--pitch-800);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;
+  transition:border-color .25s,transform .25s var(--ease)
+}
+.path-card:hover{border-color:var(--line-strong);transform:translateY(-4px)}
+.path-card.is-hit{border-color:rgba(255,197,61,.42)}
+.path-age{
+  font-family:var(--font-data);font-weight:700;font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--on-flood);background:var(--flood);align-self:flex-start;
+  padding:7px 15px;border-radius:100px;margin:20px 0 0 20px;position:relative;z-index:2
+}
+.path-media{margin:16px 20px 0;border-radius:var(--r);overflow:hidden;aspect-ratio:16/9;background:var(--pitch-700)}
+.path-media img{width:100%;height:100%;object-fit:cover}
+.path-body{padding:20px;display:flex;flex-direction:column;flex:1}
+.path-body h3{font-size:1.45rem}
+.path-body>p{color:var(--chalk-70);font-size:.95rem;margin:10px 0 18px}
+.ticks{list-style:none;display:grid;gap:10px;margin-bottom:22px}
+.ticks li{display:grid;grid-template-columns:auto 1fr;gap:11px;font-size:.92rem;color:var(--chalk-70)}
+.ticks li::before{content:'';width:7px;height:7px;margin-top:8px;border-radius:50%;background:var(--flood)}
+.path-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:18px;border-top:1px solid var(--line)}
+.price{font-family:var(--font-display);font-weight:900;font-size:1.32rem;white-space:nowrap;display:flex;align-items:baseline;gap:8px}
+.price-from{font-family:var(--font-data);font-weight:600;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;color:var(--chalk-45)}
+.price i{font-style:normal;font-family:var(--font-data);font-size:.9rem;font-weight:600;color:var(--chalk-45);letter-spacing:.04em}
+.hit-flag{position:absolute;top:20px;right:20px;z-index:2;font-family:var(--font-data);font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--flood);border:1px solid var(--flood);padding:5px 11px;border-radius:100px;background:rgba(6,32,15,.6)}
+
+/* ============ SESSION TIMELINE ============ */
+.steps{list-style:none;display:grid;gap:0;counter-reset:s}
+.step{display:grid;grid-template-columns:74px 1fr;gap:18px;padding:22px 0;border-top:1px solid var(--line)}
+.step:first-child{border-top:0}
+.step-time{font-family:var(--font-data);font-weight:700;font-size:1.02rem;letter-spacing:.06em;color:var(--flood);text-transform:uppercase;padding-top:2px}
+.step h3{font-size:1.1rem;margin-bottom:6px}
+.step p{color:var(--chalk-70);font-size:.95rem;max-width:62ch}
+
+/* ============ SAFETY ============ */
+.safety{display:grid;gap:14px}
+.sf{display:grid;grid-template-columns:auto 1fr;gap:14px;padding:20px;background:var(--pitch-800);border:1px solid var(--line);border-radius:var(--r)}
+.section--alt .sf{background:var(--pitch-700)}
+.sf-mark{width:9px;height:9px;border-radius:50%;background:var(--flood);margin-top:8px}
+.sf h3{font-size:1.02rem;margin-bottom:5px}
+.sf p{color:var(--chalk-70);font-size:.92rem}
+
+/* ============ SCHEDULE ============ */
+.fixtures{border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+.fx{display:grid;grid-template-columns:1fr;border-top:1px solid var(--line)}
+.fx:first-child{border-top:0}
+.fx-day{
+  font-family:var(--font-data);font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  font-size:.86rem;color:var(--flood);padding:16px 20px 8px;background:var(--pitch-800)
+}
+.section--alt .fx-day{background:var(--pitch-700)}
+.fx-slots{display:grid;gap:1px;background:var(--line)}
+.fx-slot{display:grid;grid-template-columns:70px 1fr;gap:14px;align-items:baseline;padding:13px 20px;background:var(--pitch-900)}
+.section--alt .fx-slot{background:var(--pitch-800)}
+.fx-time{font-family:var(--font-data);font-weight:700;font-size:1.12rem;letter-spacing:.03em}
+.fx-group{font-size:.92rem;color:var(--chalk-70)}
+
+/* ============ COACHES ============ */
+.coaches{display:grid;gap:20px}
+.coach{background:var(--pitch-800);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;transition:border-color .25s,transform .25s var(--ease)}
+.coach:hover{border-color:var(--line-strong);transform:translateY(-3px)}
+.section--alt .coach{background:var(--pitch-700)}
+.coach-photo{aspect-ratio:4/5;overflow:hidden;background:var(--pitch-700)}
+.coach-photo img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.coach-in{padding:20px}
+.coach h3{font-size:1.15rem}
+.coach-role{font-family:var(--font-data);font-size:.82rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--flood);margin:6px 0 10px}
+.coach p{color:var(--chalk-70);font-size:.92rem}
+
+/* ============ PRICING ============ */
+.plans{display:grid;gap:20px}
+.plan{display:flex;flex-direction:column;padding:28px 24px;background:var(--pitch-800);border:1px solid var(--line);border-radius:var(--r-lg);transition:border-color .25s,transform .25s var(--ease)}
+.plan:hover{border-color:var(--line-strong);transform:translateY(-3px)}
+.section--alt .plan{background:var(--pitch-700)}
+.plan.is-popular{border-color:rgba(255,197,61,.45)}
+.plan-name{font-family:var(--font-data);font-weight:700;letter-spacing:.15em;text-transform:uppercase;font-size:.88rem;color:var(--chalk-45)}
+.plan-price{font-family:var(--font-display);font-weight:900;font-size:2.5rem;line-height:1;margin:12px 0 4px}
+.plan-price span{font-size:1.1rem}
+.plan-per{font-family:var(--font-data);font-size:.92rem;letter-spacing:.04em;color:var(--flood);margin-bottom:20px}
+.plan .ticks{margin-bottom:24px}
+.plan .btn{margin-top:auto;width:100%}
+
+.perks{margin-top:26px;display:grid;gap:14px;padding:24px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--flood-soft)}
+.perks h3{font-size:1.05rem}
+.perks ul{list-style:none;display:grid;gap:10px}
+.perks li{display:grid;grid-template-columns:auto 1fr;gap:11px;font-size:.94rem;color:var(--chalk-70)}
+.perks li::before{content:'';width:7px;height:7px;margin-top:8px;border-radius:50%;background:var(--flood)}
+
+/* ============ REVIEWS ============ */
+.reviews{display:grid;gap:18px}
+.rv{padding:26px 24px;background:var(--pitch-800);border:1px solid var(--line);border-radius:var(--r-lg)}
+.section--alt .rv{background:var(--pitch-700)}
+.rv-stars{color:var(--flood);letter-spacing:.22em;font-size:.9rem}
+.rv blockquote{margin:14px 0 18px;font-size:1rem;color:var(--chalk);line-height:1.65}
+.rv figcaption{display:flex;align-items:center;gap:12px}
+.rv-ava{width:40px;height:40px;flex:none;border-radius:50%;display:grid;place-items:center;background:var(--flood);color:var(--on-flood);font-weight:800;font-size:.86rem}
+.rv-name{font-weight:700;font-size:.94rem}
+.rv-meta{font-family:var(--font-data);font-size:.85rem;letter-spacing:.05em;color:var(--chalk-45)}
+
+/* ============ FAQ ============ */
+.faq{max-width:820px;margin:0 auto;border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:22px 0;background:none;border:0;cursor:pointer;text-align:left;
+  font-family:var(--font-body);font-size:1.02rem;font-weight:600;color:var(--chalk)
+}
+.faq-q::after{content:'';flex:none;width:12px;height:12px;border-right:2px solid var(--flood);border-bottom:2px solid var(--flood);transform:rotate(45deg) translateY(-3px);transition:transform .28s var(--ease)}
+.faq-item.is-open .faq-q::after{transform:rotate(-135deg) translateY(-3px)}
+.faq-a{overflow:hidden;height:0;transition:height .3s var(--ease)}
+.faq-a p{padding:0 0 22px;color:var(--chalk-70);font-size:.96rem;max-width:70ch}
+
+/* ============ CTA + FORM ============ */
+.cta{background:var(--pitch-800)}
+.cta-grid{display:grid;gap:32px}
+.form{display:grid;gap:14px;padding:26px 22px;background:var(--pitch-900);border:1px solid var(--line);border-radius:var(--r-lg)}
+.field{display:grid;gap:7px}
+.field label{font-family:var(--font-data);font-size:.86rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--chalk-45)}
+.field input,.field select{
+  width:100%;padding:14px 15px;border-radius:var(--r);
+  background:var(--pitch-800);border:1px solid var(--line);color:var(--chalk);
+  font-family:var(--font-body);font-size:1rem;transition:border-color .2s
+}
+.field input:hover,.field select:hover{border-color:var(--line-strong)}
+.field input::placeholder{color:var(--chalk-45)}
+.form .btn{margin-top:6px}
+.form-note{font-size:.82rem;color:var(--chalk-45);line-height:1.5}
+.form-status{font-size:.92rem;font-weight:600;color:var(--flood);min-height:1.2em}
+.form-status[data-state="error"]{color:#FF9E7A}
+.form-status[data-state="ok"]{color:var(--flood)}
+
+.contacts{display:grid;gap:18px;align-content:start}
+.contact-row{display:grid;gap:4px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.contact-row:last-child{border-bottom:0}
+.contact-k{font-family:var(--font-data);font-size:.84rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--chalk-45)}
+.contact-v{font-size:1.05rem;font-weight:600;text-decoration:none;color:var(--chalk)}
+a.contact-v:hover{color:var(--flood)}
+.contact-sub{font-size:.9rem;color:var(--chalk-70)}
+.msg-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+
+/* ============ FOOTER ============ */
+.footer{background:var(--ink);padding:52px 0 26px;border-top:1px solid var(--line)}
+.footer-grid{display:grid;gap:32px}
+.footer-about{color:var(--chalk-45);font-size:.92rem;max-width:34ch;margin-top:14px}
+.footer h4{font-family:var(--font-data);font-size:.84rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--chalk-45);margin-bottom:16px}
+.footer ul{list-style:none;display:grid;gap:11px}
+.footer a{color:var(--chalk-70);text-decoration:none;font-size:.93rem}
+.footer a:hover{color:var(--flood)}
+.footer-bottom{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;font-size:.85rem;color:var(--chalk-45)}
+
+/* ============ FOOTER TG BUTTON (matches footer link look) ============ */
+.footer-tg{
+  background:none;border:0;padding:0;margin:0;cursor:pointer;
+  color:var(--chalk-70);text-decoration:none;font-size:.93rem;
+  font-family:var(--font-body);text-align:left
+}
+.footer-tg:hover{color:var(--flood)}
+
+/* ============ TOAST (success notification) ============ */
+.toast-layer{
+  position:fixed;left:50%;bottom:28px;z-index:400;
+  transform:translateX(-50%) translateY(16px);
+  display:flex;justify-content:center;width:100%;padding:0 20px;
+  pointer-events:none
+}
+.toast{
+  display:flex;align-items:center;gap:12px;max-width:440px;
+  background:var(--pitch-800);border:1px solid var(--line-strong);
+  border-radius:100px;padding:14px 22px;
+  box-shadow:0 16px 40px rgba(0,0,0,.35);
+  opacity:0;transform:translateY(12px);
+  transition:opacity .35s var(--ease),transform .35s var(--ease);
+  pointer-events:auto
+}
+.toast.is-visible{opacity:1;transform:translateY(0)}
+.toast-icon{
+  width:24px;height:24px;flex:none;border-radius:50%;
+  background:var(--flood);color:var(--on-flood);
+  display:grid;place-items:center;font-size:13px;font-weight:900
+}
+.toast-text{font-size:.92rem;color:var(--chalk);line-height:1.4}
+
+/* ============ TELEGRAM DIALOG (in-page simulation) ============ */
+.tg-veil{
+  position:fixed;inset:0;z-index:300;
+  background:rgba(4,21,12,.6);backdrop-filter:blur(4px);
+  display:flex;align-items:center;justify-content:center;padding:20px
+}
+.tg-veil[hidden]{display:none}
+.tg-dialog{
+  width:100%;max-width:360px;background:var(--pitch-800);
+  border:1px solid var(--line-strong);border-radius:var(--r-lg);
+  overflow:hidden;position:relative;
+  box-shadow:0 24px 60px rgba(0,0,0,.4)
+}
+.tg-close{
+  position:absolute;top:10px;right:10px;z-index:2;
+  width:30px;height:30px;border-radius:50%;border:0;cursor:pointer;
+  background:rgba(255,255,255,.08);color:var(--chalk);font-size:18px;line-height:1
+}
+.tg-close:hover{background:rgba(255,255,255,.16)}
+.tg-head{
+  display:flex;align-items:center;gap:12px;padding:18px 44px 16px 18px;
+  background:var(--pitch-700);border-bottom:1px solid var(--line)
+}
+.tg-avatar{
+  width:40px;height:40px;flex:none;border-radius:50%;
+  background:var(--flood);display:grid;place-items:center;font-size:18px
+}
+.tg-name{font-weight:700;font-size:.98rem}
+.tg-sub{font-size:.78rem;color:var(--chalk-45);margin-top:2px}
+.tg-body{padding:18px;min-height:64px;display:flex;flex-direction:column;gap:10px;justify-content:flex-end}
+.tg-hint{font-size:.85rem;color:var(--chalk-45)}
+.tg-bubble{
+  align-self:flex-end;max-width:85%;background:var(--flood);color:var(--on-flood);
+  padding:10px 14px;border-radius:14px 14px 4px 14px;font-size:.9rem;line-height:1.4
+}
+.tg-status{font-size:.8rem;color:var(--chalk-45);display:flex;align-items:center;gap:6px}
+.tg-status.is-sent{color:var(--flood)}
+.tg-form{display:flex;gap:8px;padding:14px 18px;border-top:1px solid var(--line);background:var(--pitch-800)}
+.tg-form input{
+  flex:1;padding:11px 14px;border-radius:100px;
+  background:var(--pitch-900);border:1px solid var(--line);color:var(--chalk);
+  font-family:var(--font-body);font-size:.92rem
+}
+.tg-form input::placeholder{color:var(--chalk-45)}
+.tg-send{
+  width:40px;height:40px;flex:none;border-radius:50%;border:0;cursor:pointer;
+  background:var(--flood);color:var(--on-flood);font-size:16px;
+  transition:transform .2s var(--ease)
+}
+.tg-send:hover{transform:scale(1.06)}
+.tg-send:disabled{opacity:.6;cursor:default;transform:none}
+
+/* ============ MOTION ============ */
+.js .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.js .reveal.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .reveal{opacity:1;transform:none;transition:none}
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+
+/* ============ RESPONSIVE ============ */
+@media (min-width:640px){
+  :root{--pad:28px}
+  .hero-facts{grid-template-columns:repeat(4,1fr)}
+  .outcomes{grid-template-columns:repeat(2,1fr)}
+  .safety{grid-template-columns:repeat(2,1fr)}
+  .reviews{grid-template-columns:repeat(2,1fr)}
+  .fx{grid-template-columns:190px 1fr;align-items:start}
+  .fx-day{padding:18px 20px;background:transparent}
+  .section--alt .fx-day{background:transparent}
+  .fx-slots{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:900px){
+  .section{padding:96px 0}
+  .menu,.nav-cta{display:flex}
+  .burger{display:none}
+  .drawer{display:none!important}
+  .hero{padding:150px 0 80px}
+  .outcomes{grid-template-columns:repeat(4,1fr)}
+  .path{grid-template-columns:repeat(3,1fr);align-items:stretch}
+  /* chalk line linking the three stages — the pathway through the club */
+  .path::before{
+    content:'';position:absolute;left:8%;right:8%;top:37px;height:2px;z-index:0;
+    background:repeating-linear-gradient(90deg,var(--line-strong) 0 12px,transparent 12px 26px)
+  }
+  .coaches{grid-template-columns:repeat(3,1fr)}
+  .plans{grid-template-columns:repeat(3,1fr)}
+  .reviews{grid-template-columns:repeat(3,1fr)}
+  .cta-grid{grid-template-columns:1.15fr .85fr;gap:48px}
+  .footer-grid{grid-template-columns:1.6fr 1fr 1fr 1fr}
+  .step{grid-template-columns:96px 1fr;gap:26px}
+  .perks ul{grid-template-columns:repeat(2,1fr)}
+  .form{padding:32px 30px}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">К содержанию</a>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="ФК Голос — на главную">
+      <span class="brand-mark" aria-hidden="true"><span></span></span>
+      ФК&nbsp;<em>«Голос»</em>
+    </a>
+    <ul class="menu">
+      <li><a href="#pathway">Секции</a></li>
+      <li><a href="#session">Тренировка</a></li>
+      <li><a href="#schedule">Расписание</a></li>
+      <li><a href="#coaches">Тренеры</a></li>
+      <li><a href="#pricing">Цены</a></li>
+      <li><a href="#faq">Вопросы</a></li>
+    </ul>
+    <a class="nav-cta" href="#join">Бесплатная тренировка</a>
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="drawer" id="drawer">
+    <ul>
+      <li><a href="#pathway">Секции</a></li>
+      <li><a href="#session">Как проходит тренировка</a></li>
+      <li><a href="#schedule">Расписание</a></li>
+      <li><a href="#coaches">Тренеры</a></li>
+      <li><a href="#pricing">Цены</a></li>
+      <li><a href="#faq">Вопросы</a></li>
+      <li><a class="drawer-cta" href="#join">Бесплатная тренировка</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true">
+    <img src="img/hero.jpg" alt="" width="1500" height="1000" fetchpriority="high" decoding="async">
+  </div>
+  <svg class="hero-chalk" viewBox="0 0 520 520" aria-hidden="true" focusable="false">
+    <circle cx="260" cy="260" r="150"/>
+    <circle cx="260" cy="260" r="4" fill="rgba(241,245,238,.28)" stroke="none"/>
+    <line x1="260" y1="0" x2="260" y2="110"/>
+    <line x1="260" y1="410" x2="260" y2="520"/>
+    <path d="M60 90 H0 M60 90 V0"/>
+  </svg>
+
+  <div class="wrap">
+    <p class="eyebrow">Набор в группы · сезон 2026/27</p>
+    <h1>Здесь у каждого есть <em>голос</em></h1>
+    <p class="hero-sub">Футбольный клуб для детей от 4 лет и взрослых. Учим играть, держать удар и слышать команду — на поле и за его пределами.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#join">Записаться на бесплатную тренировку</a>
+      <a class="btn btn-ghost" href="#pathway">Выбрать группу</a>
+    </div>
+    <div class="hero-facts">
+      <div><b>500+</b><span>учеников</span></div>
+      <div><b>8 лет</b><span>клубу</span></div>
+      <div><b>РФС</b><span>лицензии тренеров</span></div>
+      <div><b>0 ₽</b><span>первая тренировка</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ OUTCOMES ============ -->
+<section class="section" id="why">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Зачем это ребёнку</p>
+      <h2>Приходят за футболом.<br>Уходят с характером.</h2>
+      <p class="lead">Мяч — это повод. За два часа в неделю ребёнок получает то, чему не учат за партой.</p>
+    </div>
+    <div class="outcomes">
+      <article class="oc reveal">
+        <p class="oc-num">01 · Уверенность</p>
+        <h3>Перестаёт бояться ошибок</h3>
+        <p>На поле ошибаются все и постоянно. Ребёнок привыкает пробовать снова — и переносит это в школу и жизнь.</p>
+      </article>
+      <article class="oc reveal">
+        <p class="oc-num">02 · Здоровье</p>
+        <h3>Час в движении вместо часа в телефоне</h3>
+        <p>Координация, выносливость, осанка. Нагрузку подбираем по возрасту — без вреда для растущего организма.</p>
+      </article>
+      <article class="oc reveal">
+        <p class="oc-num">03 · Команда</p>
+        <h3>Настоящие друзья, а не подписчики</h3>
+        <p>Общие победы и общие поражения сближают быстрее всего. Дети учатся договариваться и поддерживать.</p>
+      </article>
+      <article class="oc reveal">
+        <p class="oc-num">04 · Дисциплина</p>
+        <h3>Режим без давления и криков</h3>
+        <p>Прийти вовремя, отработать, доиграть до конца. Привычка доводить начатое — в игровой форме.</p>
+      </article>
+    </div>
+
+    <div class="adults-note reveal">
+      <h3>Взрослым — свой состав</h3>
+      <p>Если вы гоняли мяч во дворе и скучаете по игре: у нас два вечера в неделю и матч по субботам. Без нормативов, без осуждения за форму и уровень. Приходят и те, кто не играл 15 лет.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PATHWAY (signature) ============ -->
+<section class="section section--alt" id="pathway">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Путь игрока</p>
+      <h2>Три ступени — от первого касания до взрослой команды</h2>
+      <p class="lead">Ребёнок растёт внутри клуба: переходит из группы в группу, не меняя ни поле, ни тренерский штаб, ни друзей.</p>
+    </div>
+
+    <div class="path">
+      <article class="path-card reveal">
+        <p class="path-age">4–6 лет</p>
+        <div class="path-media"><img src="img/kids.jpg" alt="Занятие младшей группы" width="800" height="533" loading="lazy" decoding="async"></div>
+        <div class="path-body">
+          <h3>Первые шаги</h3>
+          <p>Учим не футболу, а любви к движению. Мяч, эстафеты, игры — техника придёт позже и сама.</p>
+          <ul class="ticks">
+            <li>Группы до 12 детей — тренер видит каждого</li>
+            <li>2 занятия в неделю по 45 минут</li>
+            <li>Игровая методика, без нагрузок на рост</li>
+            <li>Форма клуба в подарок при записи</li>
+          </ul>
+          <div class="path-foot">
+            <p class="price"><span class="price-from">от</span>3 500 ₽<i>/мес</i></p>
+            <a class="btn btn-ghost btn-sm" href="#join">Записаться</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="path-card is-hit reveal">
+        <p class="hit-flag">Чаще всего выбирают</p>
+        <p class="path-age">7–14 лет</p>
+        <div class="path-media"><img src="img/juniors.jpg" alt="Тренировка юниорской группы" width="800" height="450" loading="lazy" decoding="async"></div>
+        <div class="path-body">
+          <h3>Юниоры</h3>
+          <p>Системная подготовка: техника, тактика, физика. Первые турниры, первые победы и первые разборы полётов.</p>
+          <ul class="ticks">
+            <li>3 тренировки в неделю по 60–90 минут</li>
+            <li>Городская детская лига и турниры</li>
+            <li>Видеоразбор игр — учимся видеть поле</li>
+            <li>Индивидуальный план развития</li>
+          </ul>
+          <div class="path-foot">
+            <p class="price"><span class="price-from">от</span>5 000 ₽<i>/мес</i></p>
+            <a class="btn btn-primary btn-sm" href="#join">Записаться</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="path-card reveal">
+        <p class="path-age">16+ лет</p>
+        <div class="path-media"><img src="img/adults.jpg" alt="Матч взрослой любительской команды" width="800" height="533" loading="lazy" decoding="async"></div>
+        <div class="path-body">
+          <h3>Взрослые</h3>
+          <p>Для тех, кто хочет играть по-настоящему — или просто выдохнуть после работы и хорошо побегать.</p>
+          <ul class="ticks">
+            <li>Вечерние группы и выходные</li>
+            <li>Товарищеский матч каждую субботу</li>
+            <li>Любительская лига города — по желанию</li>
+            <li>Аренда поля уже включена в абонемент</li>
+          </ul>
+          <div class="path-foot">
+            <p class="price"><span class="price-from">от</span>4 000 ₽<i>/мес</i></p>
+            <a class="btn btn-ghost btn-sm" href="#join">Записаться</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SESSION ============ -->
+<section class="section" id="session">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Как проходит тренировка</p>
+      <h2>90 минут, за которые<br>никто не заскучает</h2>
+      <p class="lead">Структура одинаковая на каждом занятии — детям важна предсказуемость.</p>
+    </div>
+    <ol class="steps">
+      <li class="step reveal">
+        <p class="step-time">15 мин</p>
+        <div>
+          <h3>Разминка</h3>
+          <p>Суставная гимнастика, координационная лестница, игровые эстафеты. Готовим тело к нагрузке — это главная профилактика травм.</p>
+        </div>
+      </li>
+      <li class="step reveal">
+        <p class="step-time">30 мин</p>
+        <div>
+          <h3>Техника</h3>
+          <p>Приём, пас, ведение, удар. Работаем в парах и малых группах, чтобы у каждого было максимум касаний мяча, а не очередь к тренеру.</p>
+        </div>
+      </li>
+      <li class="step reveal">
+        <p class="step-time">35 мин</p>
+        <div>
+          <h3>Игра</h3>
+          <p>Двусторонка на малых воротах. Тренер не кричит с бровки, а останавливает эпизод и объясняет, какое решение было лучше.</p>
+        </div>
+      </li>
+      <li class="step reveal">
+        <p class="step-time">10 мин</p>
+        <div>
+          <h3>Разбор</h3>
+          <p>Садимся в круг: что получилось, что нет, кого похвалить. Высказывается каждый — отсюда и название клуба.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SAFETY ============ -->
+<section class="section section--alt" id="safety">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Родителям</p>
+      <h2>Что мы делаем, чтобы вам было спокойно</h2>
+    </div>
+    <div class="safety">
+      <article class="sf reveal"><span class="sf-mark" aria-hidden="true"></span><div>
+        <h3>Страховка на каждой тренировке</h3>
+        <p>Включена в абонемент, отдельно платить не нужно. Действует на занятиях, играх и выездных турнирах.</p>
+      </div></article>
+      <article class="sf reveal"><span class="sf-mark" aria-hidden="true"></span><div>
+        <h3>Тренеры с лицензией и допуском</h3>
+        <p>Проверяем документы, образование и медкнижки. Каждый тренер работает с детьми не первый год.</p>
+      </div></article>
+      <article class="sf reveal"><span class="sf-mark" aria-hidden="true"></span><div>
+        <h3>Отдельный тренер по физподготовке</h3>
+        <p>Следит за нагрузкой по возрасту и ведёт профилактику травм. Растущий организм — не уменьшенный взрослый.</p>
+      </div></article>
+      <article class="sf reveal"><span class="sf-mark" aria-hidden="true"></span><div>
+        <h3>Крытый манеж зимой</h3>
+        <p>Занятия не отменяются из-за дождя, снега и мороза. Расписание держим круглый год.</p>
+      </div></article>
+      <article class="sf reveal"><span class="sf-mark" aria-hidden="true"></span><div>
+        <h3>Открытые тренировки для родителей</h3>
+        <p>Приходите и смотрите — в любой день, без предупреждения. Нам нечего прятать.</p>
+      </div></article>
+      <article class="sf reveal"><span class="sf-mark" aria-hidden="true"></span><div>
+        <h3>Пропуски переносим</h3>
+        <p>Заболели или уехали — занятия не сгорают. Отрабатываем в другой группе или продлеваем абонемент.</p>
+      </div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCHEDULE ============ -->
+<section class="section" id="schedule">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Расписание</p>
+      <h2>Когда тренируемся</h2>
+      <p class="lead">Занятия днём и вечером. Скажете свой график — подберём группу под него.</p>
+    </div>
+    <div class="fixtures reveal">
+      <div class="fx">
+        <p class="fx-day">Понедельник</p>
+        <div class="fx-slots">
+          <div class="fx-slot"><p class="fx-time">16:00</p><p class="fx-group">Первые шаги · 4–6</p></div>
+          <div class="fx-slot"><p class="fx-time">17:30</p><p class="fx-group">Юниоры · 7–10</p></div>
+          <div class="fx-slot"><p class="fx-time">19:30</p><p class="fx-group">Взрослые</p></div>
+        </div>
+      </div>
+      <div class="fx">
+        <p class="fx-day">Вторник</p>
+        <div class="fx-slots">
+          <div class="fx-slot"><p class="fx-time">17:00</p><p class="fx-group">Юниоры · 11–14</p></div>
+          <div class="fx-slot"><p class="fx-time">19:00</p><p class="fx-group">Взрослые</p></div>
+        </div>
+      </div>
+      <div class="fx">
+        <p class="fx-day">Среда</p>
+        <div class="fx-slots">
+          <div class="fx-slot"><p class="fx-time">16:00</p><p class="fx-group">Первые шаги · 4–6</p></div>
+          <div class="fx-slot"><p class="fx-time">17:30</p><p class="fx-group">Юниоры · 7–10</p></div>
+          <div class="fx-slot"><p class="fx-time">19:30</p><p class="fx-group">Взрослые</p></div>
+        </div>
+      </div>
+      <div class="fx">
+        <p class="fx-day">Четверг</p>
+        <div class="fx-slots">
+          <div class="fx-slot"><p class="fx-time">17:00</p><p class="fx-group">Юниоры · 11–14</p></div>
+          <div class="fx-slot"><p class="fx-time">19:00</p><p class="fx-group">Взрослые</p></div>
+        </div>
+      </div>
+      <div class="fx">
+        <p class="fx-day">Пятница</p>
+        <div class="fx-slots">
+          <div class="fx-slot"><p class="fx-time">16:00</p><p class="fx-group">Первые шаги · 4–6</p></div>
+          <div class="fx-slot"><p class="fx-time">17:30</p><p class="fx-group">Юниоры · 7–14</p></div>
+        </div>
+      </div>
+      <div class="fx">
+        <p class="fx-day">Суббота</p>
+        <div class="fx-slots">
+          <div class="fx-slot"><p class="fx-time">10:00</p><p class="fx-group">Юниоры · игровой день</p></div>
+          <div class="fx-slot"><p class="fx-time">12:00</p><p class="fx-group">Взрослые · матч</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COACHES ============ -->
+<section class="section section--alt" id="coaches">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Тренерский штаб</p>
+      <h2>Кто будет заниматься с вашим ребёнком</h2>
+    </div>
+    <div class="coaches">
+      <article class="coach reveal">
+        <div class="coach-photo"><img src="img/coach-alexey.jpg" alt="Алексей Ветров, главный тренер" width="500" height="625" loading="lazy" decoding="async"></div>
+        <div class="coach-in">
+          <h3>Алексей Ветров</h3>
+          <p class="coach-role">Главный тренер</p>
+          <p>Лицензия UEFA B, 15 лет тренерского стажа, бывший игрок ФНЛ. Ведёт юниоров и взрослый состав.</p>
+        </div>
+      </article>
+      <article class="coach reveal">
+        <div class="coach-photo"><img src="img/coach-marina.jpg" alt="Марина Соколова, тренер младших групп" width="500" height="625" loading="lazy" decoding="async"></div>
+        <div class="coach-in">
+          <h3>Марина Соколова</h3>
+          <p class="coach-role">Младшие группы</p>
+          <p>Педагог-психолог, специализация — дети 4–8 лет. Автор игровой методики, по которой занимаются «Первые шаги».</p>
+        </div>
+      </article>
+      <article class="coach reveal">
+        <div class="coach-photo"><img src="img/coach-dmitry.jpg" alt="Дмитрий Кравцов, тренер по физподготовке" width="500" height="625" loading="lazy" decoding="async"></div>
+        <div class="coach-in">
+          <h3>Дмитрий Кравцов</h3>
+          <p class="coach-role">Физподготовка</p>
+          <p>Мастер спорта по лёгкой атлетике. Отвечает за нагрузку по возрасту и профилактику травм во всех группах.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="section" id="pricing">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Стоимость</p>
+      <h2>Одна цифра в месяц — и больше ничего</h2>
+      <p class="lead">Форма, страховка и аренда поля уже внутри. Первая тренировка бесплатная, вступительных взносов нет.</p>
+    </div>
+
+    <div class="plans">
+      <article class="plan reveal">
+        <p class="plan-name">Первые шаги · 4–6</p>
+        <p class="plan-price">3 500 <span>₽/мес</span></p>
+        <p class="plan-per">8 занятий · 437 ₽ за тренировку</p>
+        <ul class="ticks">
+          <li>2 занятия в неделю по 45 минут</li>
+          <li>Группы до 12 детей</li>
+          <li>Форма клуба в подарок</li>
+          <li>Страховка включена</li>
+        </ul>
+        <a class="btn btn-ghost" href="#join">Записаться</a>
+      </article>
+
+      <article class="plan is-popular reveal">
+        <p class="plan-name">Юниоры · 7–14</p>
+        <p class="plan-price">5 000 <span>₽/мес</span></p>
+        <p class="plan-per">12 занятий · 417 ₽ за тренировку</p>
+        <ul class="ticks">
+          <li>3 тренировки в неделю по 60–90 минут</li>
+          <li>Турниры и городская лига</li>
+          <li>Видеоразбор игр</li>
+          <li>Форма клуба и страховка</li>
+        </ul>
+        <a class="btn btn-primary" href="#join">Записаться</a>
+      </article>
+
+      <article class="plan reveal">
+        <p class="plan-name">Взрослые · 16+</p>
+        <p class="plan-price">4 000 <span>₽/мес</span></p>
+        <p class="plan-per">8–12 занятий · от 333 ₽ за тренировку</p>
+        <ul class="ticks">
+          <li>Вечерние группы и выходные</li>
+          <li>Матч каждую субботу</li>
+          <li>Аренда поля включена</li>
+          <li>Участие в лиге — по желанию</li>
+        </ul>
+        <a class="btn btn-ghost" href="#join">Записаться</a>
+      </article>
+    </div>
+
+    <div class="perks reveal">
+      <h3>Как платить меньше</h3>
+      <ul>
+        <li><strong>−15%</strong> на каждый абонемент, если занимаются двое из семьи и больше</li>
+        <li><strong>−10%</strong> при оплате за 3 месяца, <strong>−15%</strong> — за 6 месяцев</li>
+        <li>Пропущенные по болезни занятия переносим — они не сгорают</li>
+        <li>Пробная тренировка бесплатная и ни к чему не обязывает</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="section section--alt" id="reviews">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Отзывы</p>
+      <h2>Что говорят родители и игроки</h2>
+    </div>
+    <div class="reviews">
+      <figure class="rv reveal">
+        <p class="rv-stars" aria-label="Оценка 5 из 5">★★★★★</p>
+        <blockquote>«Пришли в сентябре, Миша стеснялся и держался за меня. К Новому году сам собирал сумку и торопил меня на тренировку. Стал спокойнее и увереннее — это видно даже в школе.»</blockquote>
+        <figcaption>
+          <span class="rv-ava" aria-hidden="true">ОК</span>
+          <span><span class="rv-name">Ольга Ковалёва</span><br><span class="rv-meta">мама Миши, 9 лет · 2-й год в клубе</span></span>
+        </figcaption>
+      </figure>
+      <figure class="rv reveal">
+        <p class="rv-stars" aria-label="Оценка 5 из 5">★★★★★</p>
+        <blockquote>«Мне 34, не играл со школы, боялся позориться. Через месяц бегаю всю двусторонку. Тренер даёт нагрузку по состоянию, а не по возрасту в паспорте.»</blockquote>
+        <figcaption>
+          <span class="rv-ava" aria-hidden="true">АС</span>
+          <span><span class="rv-name">Андрей Сергеев</span><br><span class="rv-meta">взрослая группа · 1 год в клубе</span></span>
+        </figcaption>
+      </figure>
+      <figure class="rv reveal">
+        <p class="rv-stars" aria-label="Оценка 5 из 5">★★★★★</p>
+        <blockquote>«Дочке 5, ходим к Марине. Занятие — сплошная игра, дети не замечают, что их чему-то учат. Отдельное спасибо, что можно сидеть и смотреть тренировку.»</blockquote>
+        <figcaption>
+          <span class="rv-ava" aria-hidden="true">ЕП</span>
+          <span><span class="rv-name">Елена Петрова</span><br><span class="rv-meta">мама Алисы, 5 лет · полгода в клубе</span></span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="section-head section-head--center reveal">
+      <p class="eyebrow">Вопросы</p>
+      <h2>Что спрашивают перед записью</h2>
+    </div>
+    <div class="faq">
+      <div class="faq-item">
+        <h3><button class="faq-q" type="button" aria-expanded="false">А если ребёнку не понравится?</button></h3>
+        <div class="faq-a"><p>Первая тренировка бесплатная и ни к чему не обязывает — приходите, смотрите, решаете. Если после оплаченного месяца поймёте, что не ваше, вернём деньги за неиспользованные занятия.</p></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-q" type="button" aria-expanded="false">Что если пропустим из-за болезни или отпуска?</button></h3>
+        <div class="faq-a"><p>Занятия не сгорают. Отработаете в другой группе подходящего возраста или продлим абонемент на количество пропусков — как вам удобнее. Достаточно предупредить тренера.</p></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-q" type="button" aria-expanded="false">У ребёнка нет никакого опыта. Возьмёте?</button></h3>
+        <div class="faq-a"><p>Да, большинство приходит именно так. В каждой возрастной категории есть группы для начинающих — ребёнок попадёт к ровесникам своего уровня, а не к тем, кто играет третий год.</p></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-q" type="button" aria-expanded="false">Нужна ли медицинская справка?</button></h3>
+        <div class="faq-a"><p>Для детских групп — справка от педиатра о допуске к занятиям физкультурой. Её можно принести на второе занятие, пробное проводим без неё. Взрослым справка не нужна, но базовый медосмотр рекомендуем.</p></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-q" type="button" aria-expanded="false">Что взять на первую тренировку?</button></h3>
+        <div class="faq-a"><p>Спортивная форма, кроссовки или бутсы и бутылка воды. Мячи, манишки и весь инвентарь — наши. Форму клуба выдадим после записи.</p></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-q" type="button" aria-expanded="false">Можно смотреть тренировку?</button></h3>
+        <div class="faq-a"><p>Конечно. У поля есть места для родителей, приходить можно в любой день без предупреждения. Единственная просьба — не подсказывать детям с трибуны, это сбивает.</p></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-q" type="button" aria-expanded="false">Есть ли скидки?</button></h3>
+        <div class="faq-a"><p>Да: −15% на каждый абонемент, если из семьи занимаются двое и больше; −10% при оплате за 3 месяца и −15% при оплате за 6. Скидки суммируются.</p></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-q" type="button" aria-expanded="false">Как проходит запись?</button></h3>
+        <div class="faq-a"><p>Оставляете заявку или звоните — мы уточняем возраст и удобное время, предлагаем группу и записываем на ближайшую тренировку. Вся процедура занимает пару минут.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA + FORM ============ -->
+<section class="section cta" id="join">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Первый шаг</p>
+      <h2>Запишитесь на бесплатную тренировку</h2>
+      <p class="lead">Оставьте контакты — перезвоним в течение рабочего дня, подберём группу по возрасту и удобному времени.</p>
+    </div>
+
+    <div class="cta-grid">
+      <form class="form reveal" id="joinForm" novalidate>
+        <div class="field">
+          <label for="f-name">Как вас зовут</label>
+          <input id="f-name" name="name" type="text" placeholder="Имя" autocomplete="name" maxlength="60" required>
+        </div>
+        <div class="field">
+          <label for="f-phone">Телефон для связи</label>
+          <input id="f-phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" maxlength="25" required>
+        </div>
+        <div class="field">
+          <label for="f-group">Кого записываем</label>
+          <select id="f-group" name="group">
+            <option>Первые шаги · 4–6 лет</option>
+            <option selected>Юниоры · 7–14 лет</option>
+            <option>Взрослые · 16+</option>
+            <option>Пока не определились</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Отправить заявку</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        <p class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных. Перезвоним с номера +7 (495) 134-82-23.</p>
+      </form>
+
+      <div class="contacts reveal">
+        <div class="contact-row">
+          <p class="contact-k">Телефон</p>
+          <a class="contact-v" href="tel:+74951348223">+7 (495) 134-82-23</a>
+          <p class="contact-sub">Ежедневно с 9:00 до 21:00</p>
+          <div class="msg-links">
+            <a class="btn btn-ghost btn-sm" href="tel:+74951348223">Позвонить</a>
+            <button type="button" class="btn btn-ghost btn-sm js-tg-open">Telegram</button>
+          </div>
+        </div>
+        <div class="contact-row">
+          <p class="contact-k">Адрес</p>
+          <p class="contact-v">ул. Спортивная, 12</p>
+          <p class="contact-sub">Стадион «Юность», 7 минут пешком от метро. Парковка для родителей — бесплатная.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="#top">
+          <span class="brand-mark" aria-hidden="true"><span></span></span>
+          ФК&nbsp;<em>«Голос»</em>
+        </a>
+        <p class="footer-about">Футбольный клуб для детей от 4 лет и взрослых. Учим играть, держать удар и слышать команду.</p>
+      </div>
+      <div>
+        <h4>Секции</h4>
+        <ul>
+          <li><a href="#pathway">Первые шаги · 4–6</a></li>
+          <li><a href="#pathway">Юниоры · 7–14</a></li>
+          <li><a href="#pathway">Взрослые · 16+</a></li>
+          <li><a href="#pricing">Цены</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Клуб</h4>
+        <ul>
+          <li><a href="#why">О клубе</a></li>
+          <li><a href="#session">Как проходит тренировка</a></li>
+          <li><a href="#safety">Безопасность</a></li>
+          <li><a href="#coaches">Тренеры</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <ul>
+          <li><a href="tel:+74951348223">+7 (495) 134-82-23</a></li>
+          <li><button type="button" class="footer-tg js-tg-open">Telegram</button></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ФК «Голос»</span>
+      <span>ул. Спортивная, 12 · ежедневно 9:00–21:00</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ TOAST ============ -->
+<div class="toast-layer" aria-live="polite" aria-atomic="true">
+  <div class="toast" id="toast">
+    <span class="toast-icon" aria-hidden="true">✓</span>
+    <p class="toast-text" id="toastText"></p>
+  </div>
+</div>
+
+<!-- ============ TELEGRAM DIALOG (in-page, no real send) ============ -->
+<div class="tg-veil" id="tgVeil" hidden>
+  <div class="tg-dialog" role="dialog" aria-modal="true" aria-labelledby="tgTitle">
+    <button type="button" class="tg-close js-tg-close" aria-label="Закрыть">&times;</button>
+    <div class="tg-head">
+      <span class="tg-avatar" aria-hidden="true">✈️</span>
+      <div>
+        <p class="tg-name" id="tgTitle">ФК «Голос»</p>
+        <p class="tg-sub">обычно отвечает в течение часа</p>
+      </div>
+    </div>
+    <div class="tg-body" id="tgBody">
+      <p class="tg-hint">Напишите вопрос — ответим в Telegram.</p>
+    </div>
+    <form class="tg-form" id="tgForm">
+      <input type="text" id="tgInput" placeholder="Сообщение…" autocomplete="off" maxlength="500" required>
+      <button type="submit" class="tg-send" aria-label="Отправить">➤</button>
+    </form>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  document.documentElement.classList.add('js');
+
+  /* ---- sticky nav ---- */
+  var nav = document.getElementById('nav');
+  var onScroll = function () {
+    nav.classList.toggle('is-stuck', window.scrollY > 24);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---- mobile drawer ---- */
+  var burger = document.getElementById('burger');
+  burger.addEventListener('click', function () {
+    var open = nav.classList.toggle('is-open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+  });
+
+  /* ---- anchor scrolling with sticky-nav offset ---- */
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = link.getAttribute('href').slice(1);
+      if (!id) return;
+      var target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      nav.classList.remove('is-open');
+      burger.setAttribute('aria-expanded', 'false');
+      var top = target.getBoundingClientRect().top + window.pageYOffset - nav.offsetHeight;
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: top, behavior: reduce ? 'auto' : 'smooth' });
+    });
+  });
+
+  /* ---- FAQ accordion ---- */
+  document.querySelectorAll('.faq-q').forEach(function (btn) {
+    var item = btn.closest('.faq-item');
+    var panel = item.querySelector('.faq-a');
+    btn.addEventListener('click', function () {
+      var isOpen = item.classList.contains('is-open');
+      document.querySelectorAll('.faq-item.is-open').forEach(function (openItem) {
+        openItem.classList.remove('is-open');
+        openItem.querySelector('.faq-a').style.height = '0px';
+        openItem.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('is-open');
+        panel.style.height = panel.scrollHeight + 'px';
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  /* ---- scroll reveal ---- */
+  var revealables = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px' });
+    revealables.forEach(function (el) { io.observe(el); });
+  } else {
+    revealables.forEach(function (el) { el.classList.add('is-in'); });
+  }
+
+  /* ---- toast: brief auto-dismissing notification ---- */
+  var toast = document.getElementById('toast');
+  var toastText = document.getElementById('toastText');
+  var toastTimer = null;
+
+  var showToast = function (text) {
+    toastText.textContent = text;            // textContent, never innerHTML
+    toast.classList.add('is-visible');
+    window.clearTimeout(toastTimer);
+    toastTimer = window.setTimeout(function () {
+      toast.classList.remove('is-visible');
+    }, 4000);
+  };
+
+  /* ---- lead form: client-side validation + toast confirmation ---- */
+  var form = document.getElementById('joinForm');
+  var status = document.getElementById('formStatus');
+
+  var setStatus = function (text, state) {
+    status.textContent = text;              // textContent, never innerHTML
+    if (state) { status.setAttribute('data-state', state); }
+    else { status.removeAttribute('data-state'); }
+  };
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var name = form.elements.name.value.trim();
+    var phone = form.elements.phone.value.trim();
+
+    if (name.length < 2) {
+      setStatus('Напишите, пожалуйста, имя.', 'error');
+      form.elements.name.focus();
+      return;
+    }
+    if (phone.replace(/\D/g, '').length < 10) {
+      setStatus('Проверьте номер телефона — не хватает цифр.', 'error');
+      form.elements.phone.focus();
+      return;
+    }
+
+    setStatus('');
+    var submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Отправляем…';
+
+    window.setTimeout(function () {
+      form.reset();
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Отправить заявку';
+      showToast('Заявка принята. Перезвоним в течение рабочего дня и подберём группу.');
+    }, 700);
+  });
+
+  /* ---- Telegram dialog: in-page simulation, nothing ever leaves the site ---- */
+  var tgVeil = document.getElementById('tgVeil');
+  var tgBody = document.getElementById('tgBody');
+  var tgForm = document.getElementById('tgForm');
+  var tgInput = document.getElementById('tgInput');
+  var tgLastFocused = null;
+
+  var tgOpen = function () {
+    tgLastFocused = document.activeElement;
+    tgVeil.hidden = false;
+    document.body.style.overflow = 'hidden';
+    window.setTimeout(function () { tgInput.focus(); }, 50);
+  };
+  var tgClose = function () {
+    tgVeil.hidden = true;
+    document.body.style.overflow = '';
+    if (tgLastFocused) { tgLastFocused.focus(); }
+  };
+
+  document.querySelectorAll('.js-tg-open').forEach(function (btn) {
+    btn.addEventListener('click', tgOpen);
+  });
+  document.querySelectorAll('.js-tg-close').forEach(function (btn) {
+    btn.addEventListener('click', tgClose);
+  });
+  tgVeil.addEventListener('click', function (e) {
+    if (e.target === tgVeil) { tgClose(); }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (tgVeil.hidden) { return; }
+    if (e.key === 'Escape') { tgClose(); return; }
+    if (e.key !== 'Tab') { return; }
+    var focusable = tgVeil.querySelectorAll('button, input, [href], [tabindex]:not([tabindex="-1"])');
+    if (!focusable.length) { return; }
+    var first = focusable[0];
+    var last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault(); last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault(); first.focus();
+    }
+  });
+
+  tgForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var text = tgInput.value.trim();
+    if (!text) { return; }
+
+    var bubble = document.createElement('p');
+    bubble.className = 'tg-bubble';
+    bubble.textContent = text;
+    tgBody.appendChild(bubble);
+
+    var msgStatus = document.createElement('p');
+    msgStatus.className = 'tg-status';
+    msgStatus.textContent = 'Отправляется…';
+    tgBody.appendChild(msgStatus);
+
+    tgInput.value = '';
+    var sendBtn = tgForm.querySelector('.tg-send');
+    sendBtn.disabled = true;
+
+    window.setTimeout(function () {
+      msgStatus.textContent = '✓ Доставлено';
+      msgStatus.classList.add('is-sent');
+      sendBtn.disabled = false;
+      tgInput.focus();
+    }, 650);
+  });
+
+})();
+</script>
+
+</body>
+</html>
